@@ -10,7 +10,7 @@ class LexicalAnalyzer {
     init {
         val providers = listOf(
             StateProvider(AnalyzeState.IDENTIFIER, WordClass.IDENTIFIER),
-            StateProvider(AnalyzeState.START, WordClass.SPACE),
+            StateProvider(AnalyzeState.START, WordClass.IDENTIFIER),
             StateProvider(AnalyzeState.START, WordClass.OPENED_BRACKET),
             StateProvider(AnalyzeState.START, WordClass.SQUARE_OPENED_BRACKET),
             StateProvider(AnalyzeState.NUMBER, WordClass.NUMBER) { state == AnalyzeState.START },
@@ -25,12 +25,14 @@ class LexicalAnalyzer {
 
     private fun createLexem(lexem: Lexem<LetterClass>, wordClass: WordClass) {
         val addLexem: () -> Unit = {
-            lexicalAnalyzeResult.add(
-                Lexem(
-                    lexem.lexemName,
-                    wordClass
+            if (lexem.lexemClass != SPACE) {
+                lexicalAnalyzeResult.add(
+                    Lexem(
+                        lexem.lexemName,
+                        wordClass
+                    )
                 )
-            )
+            }
         }
 
         when (state) {

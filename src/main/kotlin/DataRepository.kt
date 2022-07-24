@@ -3,10 +3,9 @@ import java.io.File
 object DataRepository {
     private const val rootPath = "./src/main/resources/"
 
-    fun dataInput(): String = File(rootPath + "input.txt")
+    fun dataInput(): String? = File(rootPath + "input.txt")
         .bufferedReader()
         .readLine()
-        .trim()
 
     fun dataOutput(res: String) = File(rootPath + "output.txt")
         .printWriter()

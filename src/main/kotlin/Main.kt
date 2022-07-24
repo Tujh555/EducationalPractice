@@ -3,6 +3,12 @@ fun main() = DataRepository.run {
     val lexicalAnalyzer = LexicalAnalyzer()
 
     val inputString = dataInput()
+
+    if (inputString == null) {
+        dataOutput("REJECT")
+        return
+    }
+
     dataOutput(
         getResult(inputString, syntaxAnalyzer, lexicalAnalyzer)
     )

@@ -1,1 +1,1 @@
-IF f(a[2] + a[*3]) then b(a23);
+if f(a[  -    12423325] + a[+2]) then p(e3) else psfsd12(                    sa23sf);

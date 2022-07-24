@@ -45,9 +45,6 @@ class SyntaxAnalyzer {
         state = AnalyzeState.START
 
         for (lexem in words) {
-            if (lexem.lexemClass == SPACE)
-                continue
-
             try {
                 state = getState(lexem.lexemClass)
             } catch (e: IllegalArgumentException) {
